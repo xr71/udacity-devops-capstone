@@ -1,6 +1,6 @@
 FROM python:3.7
 
-ADD . /app
+COPY . /app
 WORKDIR /app
 
 RUN pip install -U --no-cache-dir pip && \
@@ -9,4 +9,3 @@ RUN pip install -U --no-cache-dir pip && \
 EXPOSE 5000
 
 CMD ["python3", "flasgger-app/app.py"]
-
