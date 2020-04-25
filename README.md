@@ -10,6 +10,16 @@ This repository builds a Flask api app with the Flasgger interface in Docker. Th
 5. You will also need to install `kubectl` and `eksctl`: I followed the resources here: 
   * https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html 
   * https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
-  https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+  * https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
 6. This is also a good time to make sure that the `jenkins` user group can call docker commands by adding this to your Jenkins instance: `sudo usermod -aG docker jenkins`
+7. It is important to note here also that your `eksctl` and `kubectl` must be the correct versions as mentioned by the resources above, and that if you need to debug, it will be helpful to know the storage of the KUBECONFIG file in `~/.kube/config`
+8. Once the pipeline finishes running, you will be able to navigate to AWS EKS and see the loadbalancer service available. 
+
+### Dependencies:
+* Docker
+* Kubectl
+* AWS CLI
+* EKS CLI (eksctl)
+* python3 venv with flask and flasgger (if want to run the app locally)
+
