@@ -7,10 +7,14 @@ pipeline {
             }
         }
         stage('Lint Dockerfile') {
+            steps {
                 sh 'hadolint --ignore DL3013 Dockerfile'
+            }
         }
         stage('Upload to Dockerhub') {
-            sh 'echo TODOO'
+            steps {
+                sh 'echo TODOO'
+            }
         }
     }
 }
