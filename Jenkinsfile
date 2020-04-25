@@ -1,9 +1,9 @@
 pipeline {
+    agent any
     environment {
         registry = "xuren71/devops-capstone"
-        registryCredential = ‘dockerhub’
+        registryCredential = 'dockerhub'
     }
-    agent any
     stages {
         stage('Lint python app') {
             steps {
