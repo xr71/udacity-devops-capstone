@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Lint python app') {
             steps {
-                sh 'pylint3 --disable=R,C flasgger-app/app.py'
+                sh 'pylint --disable=R,C,E flasgger-app/app.py'
             }
         }
         stage('Lint Dockerfile') {
