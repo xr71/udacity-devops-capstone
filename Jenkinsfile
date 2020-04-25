@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Deploy image to EKS') {
             steps {
-                sh 'kubectl set image deployment/udacity-deployment xuren71/devops-capstone' + ":$BUILD_NUMBER"
+                sh 'kubectl set image deployment/udacity-deployment udacity=xuren71/devops-capstone' + ":$BUILD_NUMBER"
             }
         }
     }
