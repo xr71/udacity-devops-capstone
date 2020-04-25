@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        registry = "xuren71/devops-capstone"
+        registryCredential = ‘dockerhub’
+    }
     agent any
     stages {
         stage('Lint python app') {
@@ -11,9 +15,20 @@ pipeline {
                 sh 'hadolint --ignore DL3013 Dockerfile'
             }
         }
-        stage('Upload to Dockerhub') {
+        stage('Build Docker image') {
             steps {
-                sh 'echo TODOO'
+                script {
+                    docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        stage('Deploy Image') {
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
