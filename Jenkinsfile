@@ -22,13 +22,18 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Image') {
-            steps{
+        stage('Push image to Dockerhub') {
+            steps {
                 script {
-                    docker.withRegistry('', registryCredential ) {
+                    docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                     }
                 }
+            }
+        }
+        stage('Deploy image to EKS') {
+            steps {
+                sh 'kubectl set image -n default deployment/capstone-deployment capstone=xuren71/devops-capstone' + ":$BUILD_NUMBER"
             }
         }
     }

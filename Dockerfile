@@ -4,6 +4,6 @@ COPY . /app
 WORKDIR /app
 RUN make install
 
-EXPOSE 5000
+EXPOSE 80
 
 CMD ["python3", "flasgger-app/app.py"]
