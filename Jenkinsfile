@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Deploy image to EKS') {
             steps {
-                sh 'kubectl set image -n default deployment/capstone-deployment capstone=xuren71/devops-capstone' + ":$BUILD_NUMBER"
+                sh 'kubectl set image deployment/capstone-deployment xuren71/devops-capstone' + ":$BUILD_NUMBER"
             }
         }
     }
