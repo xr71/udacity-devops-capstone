@@ -1,15 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
-  name: capstone-deployment
+  name: udacity-deployment
   labels:
-    app: capstone
+    app: udacity
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: capstone
+      app: udacity
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,10 +17,10 @@ spec:
   template:
     metadata:
       labels:
-        app: capstone
+        app: udacity
     spec:
       containers:
-      - name: devops-capstone
+      - name: udacity
         image: xuren71/devops-capstone
         ports:
         - containerPort: 80
@@ -31,7 +30,7 @@ spec:
             path: /
             scheme: HTTP
             port: 80
-          initialDelaySeconds: 10
+          initialDelaySeconds: 5
           periodSeconds: 10
-          successThreshold: 5
-          timeoutSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1

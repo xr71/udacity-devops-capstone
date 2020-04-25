@@ -12,4 +12,4 @@ This repository builds a Flask api app with the Flasgger interface in Docker. Th
   * https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
   https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
-
+6. This is also a good time to make sure that the `jenkins` user group can call docker commands by adding this to your Jenkins instance: `sudo usermod -aG docker jenkins`
