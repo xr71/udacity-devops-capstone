@@ -1,10 +1,8 @@
-FROM python:3.7
+FROM python:3.8-buster
 
 COPY . /app
 WORKDIR /app
-
-RUN pip install -U --no-cache-dir pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN make install
 
 EXPOSE 5000
 
