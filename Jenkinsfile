@@ -1,18 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Lint HTML') {
+        stage('Lint python app') {
             steps {
-                sh 'tidy -q -e *.html'
+                sh 'pylint --disable=R,C flasgger-app/app.py'
             }
         }
-        stage('Upload to AWS') {
-            steps {
-                withAWS(region: "us-west-2", credentials: "aws-static")
-                {
-                    s3Upload(file: "index.html", bucket: "p3-xr-jenkins-devops", path: "")
-                }
-            }
+        stage('Lint Dockerfile') {
+                sh 'hadolint --ignore DL3013 Dockerfile'
+        }
+        stage('Upload to Dockerhub') {
+            sh 'echo TODOO'
         }
     }
 }
